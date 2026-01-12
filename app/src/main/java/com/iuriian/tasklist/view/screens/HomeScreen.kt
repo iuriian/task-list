@@ -12,18 +12,24 @@ import androidx.compose.ui.unit.dp
 import com.iuriian.tasklist.ui.theme.TaskListTheme
 import com.iuriian.tasklist.view.components.DefaultButton
 import com.iuriian.tasklist.view.components.DefaultCard
+import com.iuriian.tasklist.view.components.ScreenContainer
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceBetween,
-    ) {
-        Column {
-            DefaultCard(text = "Task name")
-        }
+fun HomeScreen(
+    modifier: Modifier = Modifier,
+    onNewTaskClick: () -> Unit,
+) {
+    ScreenContainer {
+        Column(
+            modifier = modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Column {
+                DefaultCard(text = "Task name")
+            }
 
-        DefaultButton(label = "NOVA TAREFA", onClick = {})
+            DefaultButton(label = "NOVA TAREFA", onClick = onNewTaskClick)
+        }
     }
 }
 
@@ -34,7 +40,9 @@ fun HomePreview() {
         Surface(
             modifier = Modifier.padding(16.dp),
         ) {
-            HomeScreen()
+            HomeScreen(
+                onNewTaskClick = {},
+            )
         }
     }
 }
